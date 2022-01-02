@@ -125,7 +125,7 @@ def get_actual():
     csv_data = process_data()
     data = np.array([])
     for value in csv_data:
-        data = np.append(data, int(value.replace(' ', '')))
+        data = np.append(data, int(value.replace(" ", "")))
     return data
 
 
@@ -137,15 +137,17 @@ def compare():
 
     It can be also caused by the unstable data of new infections in the Poland. Data was gathered in
     large period of time so the are fluctuations in the data.
+
+    We have also used very simple model that does not include vital dynamics and imigration / emigration.
     """
     data = get_actual()
     sir = SIR(38386, 0.05, 0.01, [4, 0])
     sir.plot(266, data)
 
 
-
 def main():
     compare()
+
 
 if __name__ == "__main__":
     main()
