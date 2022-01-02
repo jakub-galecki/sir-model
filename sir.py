@@ -16,17 +16,6 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
-def loss(point, data):
-    size = len(data)
-    beta, gamma = point
-    def SIR(t, y):
-        S = y[0]
-        I = y[1]
-        R = y[2]
-        return [-beta*S*I, beta*S*I-gamma*I, gamma*I]
-    solution = solve_ivp(SIR, [0, size], [S_0,I_0,R_0], t_eval=np.arange(0, size, 1), vectorized=True)
-    return np.sqrt(np.mean((solution.y[1] - data)**2))
-
 
 class SIR:
     """
