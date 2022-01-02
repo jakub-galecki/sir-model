@@ -52,7 +52,6 @@ class SIR:
         dS = -(self.beta * I * S / self.population)
         dI = (self.beta * S * I / self.population) - self.gamma * I
         dR = self.gamma * I
-        print(dS + dI + dR)
         return np.array([dS, dI, dR])
 
     def sir(self, t_max):
